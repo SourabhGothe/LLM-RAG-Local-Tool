@@ -1,0 +1,24 @@
+Flask>=2.0
+requests>=2.25
+
+#Langchain core and community integrations
+langchain>=0.1.0,<0.2.0
+langchain-community>=0.0.20,<0.1.0
+langchain-text-splitters>=0.0.1,<0.1.0
+langchain-chroma>=0.1.0,<0.2.0 # Specific package for Chroma integration
+
+#Ollama integration for Langchain (often part of langchain-community but explicit is good)
+langchain-ollama>=0.1.0,<0.2.0
+
+#ChromaDB client (Langchain's Chroma wrapper uses this)
+chromadb>=0.4.22,<0.5.0
+
+#Document Loaders
+pypdfium2>=4.0.0 # For PDF loading (PyPDFium2Loader is efficient)
+python-docx>=1.0.0 # For DOCX loading
+unstructured>=0.12.0 # For various file types, including .txt and potentially others.
+
+#Add "all-docs" extras for unstructured if you need wider support and don't mind larger installs:
+unstructured[all-docs]>=0.12.0
+#Tiktoken is often a dependency of Langchain for text splitting token calculations
+tiktoken>=0.5.0
