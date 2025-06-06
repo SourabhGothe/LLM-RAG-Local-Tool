@@ -38,6 +38,9 @@ This tool provides a web interface to interact with multiple Large Language Mode
     * Check your Python version: `python3 --version`
     * Ensure pip is installed.
 
+4.  If you are getting chromadb hnswlib error install below
+   sudo apt-get update && sudo apt-get install build-essential
+   sudo apt install python3-dev
 ## Setup
 
 1.  **Create Project Directory:**
