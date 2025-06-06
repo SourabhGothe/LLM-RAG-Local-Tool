@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollama Multi-LLM Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ollama Multi-LLM Interaction Tool</h1>
+            <div id="system-status" class="status-banner">
+                <p>Ollama Status: <span id="ollama-status-indicator">Checking...</span></p>
+                <p>RAG Embedding Model (<span id="rag-model-name-indicator">N/A</span>): <span id="rag-model-status-indicator">Checking...</span></p>
+                <button id="refresh-status-btn" class="small-btn">Refresh Status</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="column model-management-column">
+                <h2>Model Management</h2>
+                <div class="control-group">
+                    <label for="model-select">Select Model:</label>
+                    <select id="model-select">
+                        <option value="">Loading models...</option>
+                    </select>
+                    <button id="refresh-models-btn" class="small-btn">Refresh List</button>
+                </div>
+
+                <div class="control-group">
+                    <h3>Pull New Model</h3>
+                    <input type="text" id="new-model-name" placeholder="e.g., llama3:latest">
+                    <button id="pull-model-btn">Download Model</button>
+                    <p id="pull-model-status" class="status-message"></p>
+                </div>
+            </div>
+
+            <div class="column interaction-column">
+                <h2>LLM Interaction</h2>
+                <div class="control-group">
+                    <label for="prompt-input">Enter your prompt:</label>
+                    <textarea id="prompt-input" rows="5" placeholder="Type your query here..."></textarea>
+                </div>
+                
+                <div class="control-group">
+                    <input type="checkbox" id="use-rag-checkbox" checked>
+                    <label for="use-rag-checkbox">Use RAG (if knowledge available)</label>
+                </div>
+
+                <button id="generate-btn">Generate Response</button>
+
+                <div class="response-area">
+                    <h3>Response:</h3>
+                    <button id="copy-response-btn" class="small-btn" style="display: none;">Copy Response</button>
+                    <div id="response-output" class="output-box"><p>Response will appear here...</p></div>
+                    <p id="generate-status" class="status-message"></p>
+                </div>
+            </div>
+
+            <div class="column rag-management-column">
+                <h2>RAG - Add Knowledge</h2>
+                <div class="control-group">
+                    <h3>Upload File</h3>
+                    <p class="info-text">Supported: .txt, .pdf, .docx</p>
+                    <input type="file" id="rag-file-input" accept=".txt,.pdf,.docx">
+                    <button id="upload-rag-file-btn">Upload and Add to RAG</button>
+                    <p id="rag-file-status" class="status-message"></p>
+                </div>
+
+                <div class="control-group">
+                    <h3>Or Add Text Directly</h3>
+                    <textarea id="rag-text-input" rows="4" placeholder="Paste text here..."></textarea>
+                    <button id="add-rag-text-btn">Add Text to RAG</button>
+                    <p id="rag-text-status" class="status-message"></p>
+                </div>
+                
+                <div class="control-group">
+                    <h3>RAG Knowledge Base Status:</h3>
+                    <p id="rag-context-status">Items: 0</p>
+                    <button id="clear-rag-btn">Clear RAG Knowledge Base</button>
+                    <p id="rag-clear-status" class="status-message"></p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Ensure Ollama server is running. Default Ollama API: <span id="ollama-api-url-display">N/A</span>. RAG DB: <span id="chroma-db-path-display">N/A</span>.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
