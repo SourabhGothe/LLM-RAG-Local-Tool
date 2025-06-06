@@ -41,6 +41,10 @@ This tool provides a web interface to interact with multiple Large Language Mode
 4.  If you are getting chromadb hnswlib error install below
    sudo apt-get update && sudo apt-get install build-essential
    sudo apt install python3-dev
+
+5. numpy error with chroma
+   pip uninstall numpy
+   pip install 'numpy<2.0.0'
 ## Setup
 
 1.  **Create Project Directory:**
